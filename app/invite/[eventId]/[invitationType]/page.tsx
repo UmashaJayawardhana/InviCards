@@ -12,12 +12,12 @@ import Countdown from "@/components/Countdown";
 import WeddingGallery from "@/components/WeddingGallery";
 import GuestWishes from "@/components/GuestWishes";
 
-type PageProps = {
+interface PageProps {
   params: Promise<{
     eventId: string;
     invitationType: string;
   }>;
-};
+}
 
 export default function InvitationPage({ params }: PageProps) {
   const { eventId, invitationType } = use(params);
@@ -30,6 +30,7 @@ export default function InvitationPage({ params }: PageProps) {
 
   return (
     <main className="min-h-screen bg-[#f7f1e8]">
+
       <AnimatePresence>
         {!isOpen && (
           <Opening
@@ -64,6 +65,7 @@ export default function InvitationPage({ params }: PageProps) {
           />
         </>
       )}
+
     </main>
   );
 }
