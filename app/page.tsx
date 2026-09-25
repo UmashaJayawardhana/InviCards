@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { use, useState } from "react";
 import { AnimatePresence } from "framer-motion";
 
 import Opening from "@/components/Opening";
@@ -12,13 +12,25 @@ import Countdown from "@/components/Countdown";
 import WeddingGallery from "@/components/WeddingGallery";
 import GuestWishes from "@/components/GuestWishes";
 
-export default function Home() {
+interface PageProps {
+  params: Promise<{
+    eventId: string;
+    invitationType: string;
+  }>;
+}
+
+export default function Home({ params }: PageProps) {
+  // Get values from URL
+  const { eventId, invitationType } = use(params);
+
   const [isOpen, setIsOpen] = useState(false);
   const [guestName, setGuestName] = useState("");
 
-  // Temporary value
-  // We will get this from the URL in the next step
-  const invitationType = "Couple";
+  // Convert event ID from string to number
+  const eventIdNumber = Number(eventId);
+
+  // Convert invitation type to lowercase
+  const type = invitationType.toLowerCase();
 
   return (
     <main className="min-h-screen bg-[#f7f1e8]">
@@ -40,7 +52,7 @@ export default function Home() {
 
           <InvitationMessage
             guestName={guestName}
-            invitationType={invitationType}
+            invitationType={type}
           />
 
           <CoupleStory />
@@ -52,9 +64,9 @@ export default function Home() {
           <WeddingGallery />
 
           <GuestWishes
-  eventId={1}
-  guestName={guestName}
-/>
+            eventId={eventIdNumber}
+            guestName={guestName}
+          />
         </>
       )}
 
