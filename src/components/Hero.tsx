@@ -7,11 +7,61 @@ export default function Hero() {
   return (
     <section className="relative flex min-h-screen items-center justify-center overflow-hidden bg-[#f7f1e8]">
 
-      {/* Background decorative circles */}
+      {/* ========================================
+          CENTRAL BACKGROUND VIDEO
+          ======================================== */}
+
+      <div className="absolute inset-y-0 left-4 right-4 overflow-hidden rounded-none md:left-[4in] md:right-[4in]">
+
+        {/* Desktop Video */}
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="auto"
+          className="absolute inset-0 hidden h-full w-full object-cover md:block"
+        >
+          <source
+            src="/videos/herobg.mp4"
+            type="video/mp4"
+          />
+        </video>
+
+        {/* Mobile Video */}
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="auto"
+          className="absolute inset-0 block h-full w-full object-cover md:hidden"
+        >
+          <source
+            src="/videos/herobg.mp4"
+            type="video/mp4"
+          />
+        </video>
+
+        {/* Soft overlay */}
+        <div className="absolute inset-0 bg-[#f7f1e8]/55" />
+
+      </div>
+
+
+      {/* ========================================
+          BACKGROUND DECORATIVE CIRCLES
+          ======================================== */}
+
       <div className="absolute -left-32 top-20 h-72 w-72 rounded-full border border-[#d8c3a5] opacity-40" />
+
       <div className="absolute -right-32 bottom-20 h-96 w-96 rounded-full border border-[#d8c3a5] opacity-40" />
 
-      {/* Top-left floral decoration */}
+
+      {/* ========================================
+          TOP-LEFT FLORAL DECORATION
+          ======================================== */}
+
       <motion.div
         initial={{ opacity: 0, x: -30, y: -20 }}
         animate={{ opacity: 1, x: 0, y: 0 }}
@@ -34,11 +84,17 @@ export default function Hero() {
 
           {/* Leaves */}
           <span className="absolute left-7 top-20 h-5 w-10 rotate-[-35deg] rounded-full border border-[#9b9a78]" />
+
           <span className="absolute left-14 top-24 h-5 w-10 rotate-[35deg] rounded-full border border-[#9b9a78]" />
+
         </div>
       </motion.div>
 
-      {/* Top-right floral decoration */}
+
+      {/* ========================================
+          TOP-RIGHT FLORAL DECORATION
+          ======================================== */}
+
       <motion.div
         initial={{ opacity: 0, x: 30, y: -20 }}
         animate={{ opacity: 1, x: 0, y: 0 }}
@@ -61,11 +117,17 @@ export default function Hero() {
 
           {/* Leaves */}
           <span className="absolute right-7 top-20 h-5 w-10 rotate-[35deg] rounded-full border border-[#9b9a78]" />
+
           <span className="absolute right-14 top-24 h-5 w-10 rotate-[-35deg] rounded-full border border-[#9b9a78]" />
+
         </div>
       </motion.div>
 
-      {/* Floating petals */}
+
+      {/* ========================================
+          FLOATING PETALS
+          ======================================== */}
+
       <motion.span
         animate={{
           y: [0, 15, 0],
@@ -102,7 +164,11 @@ export default function Hero() {
         className="absolute bottom-[30%] left-[20%] h-2 w-2 rotate-45 rounded-full bg-[#d8aeb5] opacity-50"
       />
 
-      {/* Main content */}
+
+      {/* ========================================
+          MAIN CONTENT
+          ======================================== */}
+
       <div className="relative z-10 flex w-full max-w-5xl flex-col items-center px-6 py-20 text-center">
 
         {/* Small heading */}
@@ -115,7 +181,11 @@ export default function Hero() {
           We are getting married
         </motion.p>
 
-        {/* Couple image */}
+
+        {/* ========================================
+            COUPLE IMAGE
+            ======================================== */}
+
         <motion.div
           initial={{ opacity: 0, scale: 0.85 }}
           animate={{ opacity: 1, scale: 1 }}
@@ -126,11 +196,12 @@ export default function Hero() {
           {/* Outer frame */}
           <div className="absolute -inset-3 rounded-t-[180px] border border-[#c8aa82]" />
 
-          {/* Decorative flowers around photo */}
+          {/* Decorative flower - left */}
           <div className="absolute -left-10 bottom-10 z-20 text-[#c89da5]">
             <Flower2 size={42} strokeWidth={1} />
           </div>
 
+          {/* Decorative flower - right */}
           <div className="absolute -right-10 top-12 z-20 text-[#c89da5]">
             <Flower2 size={42} strokeWidth={1} />
           </div>
@@ -138,21 +209,32 @@ export default function Hero() {
           <img
             src="/images/couple1.jpg"
             alt="Bride and Groom"
-            className="h-[430px] w-[310px] rounded-t-[160px] object-cover shadow-xl"
+            className="h-[360px] w-[260px] rounded-t-[140px] object-cover shadow-xl sm:h-[430px] sm:w-[310px] sm:rounded-t-[160px]"
           />
+
         </motion.div>
 
-        {/* Names */}
+
+        {/* ========================================
+            NAMES
+            ======================================== */}
+
         <motion.h1
           initial={{ opacity: 0, y: 25 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.6 }}
-          className="mt-10 font-serif text-5xl font-normal text-[#49382d] md:text-7xl"
+          className="mt-10 font-serif text-5xl font-normal text-[#49382d] sm:text-6xl md:text-7xl"
         >
-          Kasun <span className="mx-2 text-[#b89b72]">&</span> Amaya
+          Kasun{" "}
+          <span className="mx-2 text-[#b89b72]">&</span>{" "}
+          Amaya
         </motion.h1>
 
-        {/* Date */}
+
+        {/* ========================================
+            DATE
+            ======================================== */}
+
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -166,7 +248,11 @@ export default function Hero() {
           <span>2026</span>
         </motion.div>
 
-        {/* Invitation line */}
+
+        {/* ========================================
+            INVITATION LINE
+            ======================================== */}
+
         <motion.p
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -176,13 +262,18 @@ export default function Hero() {
           We invite you to celebrate our special day with us
         </motion.p>
 
-        {/* Scroll indicator */}
+
+        {/* ========================================
+            SCROLL INDICATOR
+            ======================================== */}
+
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1.6 }}
           className="mt-12 flex flex-col items-center text-[#92795c]"
         >
+
           <span className="mb-2 text-[10px] uppercase tracking-[0.3em]">
             Scroll
           </span>
@@ -196,9 +287,11 @@ export default function Hero() {
           >
             <ChevronDown size={20} strokeWidth={1} />
           </motion.div>
+
         </motion.div>
 
       </div>
+
     </section>
   );
 }
